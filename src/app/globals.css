@@ -1,0 +1,269 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Comfortaa", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-display);
+
+  /* niubot brand tokens */
+  --color-paper: var(--paper);
+  --color-paper-dim: var(--paper-dim);
+  --color-ink: var(--ink);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-navy-soft: var(--navy-soft);
+  --color-signal: var(--signal);
+  --color-signal-soft: var(--signal-soft);
+  --color-steel: var(--steel);
+  --color-steel-soft: var(--steel-soft);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* --- niubot brand palette ---
+     paper:      #F5F6FA  cool off-white, the page's base
+     ink:        #0B0B10  near-black, body copy (echoes the "bot" wordmark)
+     navy:       #000475  brand navy, primary actions & headings (exact brand spec)
+     navy-deep:  #05073A  deep navy, dark sections (hero/footer)
+     signal:     #00C2A8  teal accent — the "connection" pulse, used sparingly
+     steel:      #797979  brand gray (echoes the "niu" wordmark), secondary text
+  */
+  --paper: #eef1f9;
+  --paper-dim: #e2e7f4;
+  --ink: #0b0b10;
+  --navy: #000475;
+  --navy-deep: #05073a;
+  --navy-soft: #10154f;
+  --signal: #00c2a8;
+  --signal-soft: #e3faf6;
+  --steel: #797979;
+  --steel-soft: #c7c9d1;
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: #ffffff;
+  --card-foreground: var(--ink);
+  --popover: #ffffff;
+  --popover-foreground: var(--ink);
+  --primary: var(--navy);
+  --primary-foreground: #ffffff;
+  --secondary: var(--paper-dim);
+  --secondary-foreground: var(--ink);
+  --muted: var(--paper-dim);
+  --muted-foreground: var(--steel);
+  --accent: var(--signal-soft);
+  --accent-foreground: var(--navy-deep);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #e2e4ee;
+  --input: #e2e4ee;
+  --ring: var(--signal);
+  --chart-1: var(--navy);
+  --chart-2: var(--signal);
+  --chart-3: var(--steel);
+  --chart-4: var(--navy-soft);
+  --chart-5: var(--steel-soft);
+  --radius: 1.1rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--navy);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--paper-dim);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: #e2e4ee;
+  --sidebar-ring: var(--signal);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans scroll-smooth;
+  }
+}
+
+@layer utilities {
+  /* The arch/portal silhouette lifted from the niubot mark — the site's
+     recurring structural shape (cards, image frames, section dividers). */
+  .arch {
+    border-radius: 40% 40% 12px 12px / 34% 34% 12px 12px;
+  }
+  .arch-lg {
+    border-radius: 50% 50% 8px 8px / 40% 40% 8px 8px;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--navy) 6%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--navy) 6%, transparent) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  /* Fixed-size arch for content cards whose height depends on their
+     content (forms, tall lists) — unlike .arch/.arch-lg, this doesn't
+     scale with the box's own height, so it never overgrows on tall cards. */
+  .arch-card {
+    border-radius: 2.75rem 2.75rem 1.25rem 1.25rem;
+  }
+}
+
+@layer utilities {
+  @keyframes marquee-left {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes marquee-right {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  .animate-marquee-left {
+    animation: marquee-left 26s linear infinite;
+  }
+  .animate-marquee-right {
+    animation: marquee-right 30s linear infinite;
+  }
+  @keyframes signal-ping {
+    0% {
+      transform: scale(0.6);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(2.2);
+      opacity: 0;
+    }
+  }
+  @keyframes node-pulse {
+    0%,
+    100% {
+      opacity: 0.45;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes float-slow {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  @keyframes dash-flow {
+    to {
+      stroke-dashoffset: -40;
+    }
+  }
+  .animate-signal-ping {
+    animation: signal-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  .animate-node-pulse {
+    animation: node-pulse 3s ease-in-out infinite;
+  }
+  .animate-float-slow {
+    animation: float-slow 6s ease-in-out infinite;
+  }
+
+  .animate-dash-flow {
+    stroke-dasharray: 6 10;
+    animation: dash-flow 1.6s linear infinite;
+  }
+
+  @keyframes step-fade {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+   .animate-step-fade {
+    animation: step-fade 0.4s ease both;
+  }
+  @keyframes confetti-pop {
+    0% {
+      transform: scale(0) rotate(0deg);
+      opacity: 0;
+    }
+    15% {
+      transform: scale(1) rotate(var(--rot));
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1) translateY(60px) rotate(calc(var(--rot) + 180deg));
+      opacity: 0;
+    }
+  }
+  .confetti-pop {
+    animation: confetti-pop 1.2s ease-out forwards;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
